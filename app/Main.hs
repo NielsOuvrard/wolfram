@@ -30,12 +30,11 @@ defaultConf = Conf {
 }
 
 showConf :: Maybe Conf -> IO ()
-showConf Nothing = exitWith (ExitFailure 84)
-showConf (Just conf) = do
-    print (rule conf)
-    print (start conf)
-    print (thelines conf)
-    print (window conf)
+showConf (Just conf) =
+    print (rule conf) >>
+    print (start conf) >>
+    print (thelines conf) >>
+    print (window conf) >>
     print (move conf)
 
 modifyConf :: Maybe Conf -> String -> Int -> Maybe Conf
@@ -51,12 +50,14 @@ fromArgsToConf :: [ String ] -> Maybe Conf -> IO (Maybe Conf)
 fromArgsToConf [] Nothing = exitWith (ExitFailure 84)
 fromArgsToConf x Nothing = fromArgsToConf x (Just defaultConf)
 fromArgsToConf [] (Just conf) = return (Just conf)
-fromArgsToConf (x:(y:ys)) (Just conf) = fromArgsToConf ys (modifyConf (Just conf) x (read y))
+fromArgsToConf (x:(y:ys)) (Just conf) =
+    fromArgsToConf ys (modifyConf (Just conf) x (read y))
 fromArgsToConf _ _ = exitWith (ExitFailure 84)
 
 checkConf :: Maybe Conf -> IO ()
 checkConf Nothing = exitWith (ExitFailure 84)
-checkConf (Just conf) = if rule conf < 1 then exitWith (ExitFailure 84) else return ()
+checkConf (Just conf) =
+    if rule conf < 1 then exitWith (ExitFailure 84) else return ()
 
 
 main :: IO ()
