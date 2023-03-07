@@ -5,29 +5,19 @@
 ## Makefile
 ##
 
-TARGET := Wolfram
+BINARY_PATH :=	$(shell stack path --local-install-root)
+NAME = wolfram
 
 all:
-	@stack build
-	@touch $(TARGET)
-	@echo "#!/bin/sh" > $(TARGET)
-	@echo "arrVar=()" >> $(TARGET)
-	@echo 'for i in "$$@"; do' >> $(TARGET)
-	@echo '    arrVar+=("$$i")' >> $(TARGET)
-	@echo 'done' >> $(TARGET)
-	@find . | grep "bin/Wolframe-exe" >> $(TARGET)
-	@truncate -s-1 $(TARGET)
-	@echo " \"\$${arrVar[@]}\"" >> $(TARGET)
-	@chmod +x $(TARGET)
+		stack build
+		cp $(BINARY_PATH)/bin/$(NAME)-exe ./$(NAME)
 
 clean:
-	@rm -f $(TARGET)
+		stack clean
 
 fclean: clean
-	@rm -rf .stack-work
+		rm -f $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
-
-# @echo "stack exec -- Wolframe-exe \"\$${arrVar[@]}\"" >> $(TARGET)
