@@ -39,11 +39,11 @@ showConf (Just conf) =
 
 modifyConf :: Maybe Conf -> String -> Int -> Maybe Conf
 modifyConf Nothing x y = modifyConf (Just defaultConf) x y
-modifyConf (Just conf) "-rule" x = Just conf { rule = x }
-modifyConf (Just conf) "-start" x = Just conf { start = x }
-modifyConf (Just conf) "-lines" x = Just conf { thelines = x }
-modifyConf (Just conf) "-window" x = Just conf { window = x }
-modifyConf (Just conf) "-move" x = Just conf { move = x }
+modifyConf (Just conf) "--rule" x = Just conf { rule = x }
+modifyConf (Just conf) "--start" x = Just conf { start = x }
+modifyConf (Just conf) "--lines" x = Just conf { thelines = x }
+modifyConf (Just conf) "--window" x = Just conf { window = x }
+modifyConf (Just conf) "--move" x = Just conf { move = x }
 modifyConf _ _ _ = Nothing
 
 fromArgsToConf :: [ String ] -> Maybe Conf -> IO (Maybe Conf)
