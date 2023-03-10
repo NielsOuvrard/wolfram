@@ -166,11 +166,13 @@ createNextLine line nextLine idx binaryRule =
     -- generation :: Int
 
 putCenterMoveStr :: String -> Int -> Int -> Int -> IO ()
-putCenterMoveStr str gen idx move =
-    if (length str) - (2 * gen) == idx then putChar '\n' >> return ()
-    else if gen + idx - move >= 0 && gen + idx - move < length str then
-         putChar (str !! (gen + idx - move)) >> putCenterMoveStr str gen (idx + 1) move
-    else putChar ' ' >> putCenterMoveStr str gen (idx + 1) move
+putCenterMoveStr str gen idx move
+    | (length str) - (2 * gen) == idx = putChar '\n'
+    | gen + idx - move >= 0 && gen + idx - move < length str =
+        putChar (str !! (gen + idx - move)) >>
+        putCenterMoveStr str gen (idx + 1) move
+    | otherwise =
+        putChar ' ' >> putCenterMoveStr str gen (idx + 1) move
 
 shouldIPrint :: Int -> Int -> String -> Int -> IO ()
 shouldIPrint start generation line move =
