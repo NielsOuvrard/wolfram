@@ -113,12 +113,12 @@ createData conf = Data {
 }
 
 createStringBeginningEven :: Int -> String
-createStringBeginningEven x = replicate ((x `div` 2) - 1) ' ' ++
-    replicate 1 '*' ++ replicate ((x `div` 2) - 1) ' '
+createStringBeginningEven x = replicate ((x `div` 2)) ' ' ++
+    "*" ++ replicate ((x `div` 2) - 1) ' '
 
 createStringBeginningOdd :: Int -> String
-createStringBeginningOdd x = replicate (x `div` 2) ' ' ++ replicate 1
-    '*' ++ replicate ((x `div` 2) - 1) ' '
+createStringBeginningOdd x = replicate ((x `div` 2)) ' ' ++
+    "*" ++ replicate ((x `div` 2)) ' '
 
 createStringBeginning :: Int -> String
 createStringBeginning x =
