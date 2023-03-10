@@ -165,21 +165,23 @@ createNextLine line nextLine idx binaryRule =
     -- idx        :: Int,
     -- generation :: Int
 
-putCenterStr :: String -> Int -> Int -> IO ()
-putCenterStr x size y =
-    if (length x) - (2 * size) == y then putChar '\n' >> return ()
-    else putChar (x !! (size + y)) >> putCenterStr x size (y + 1)
+putCenterMoveStr :: String -> Int -> Int -> Int -> IO ()
+putCenterMoveStr str gen idx move =
+    if (length str) - (2 * gen) == idx then putChar '\n' >> return ()
+    else if gen + idx - move >= 0 && gen + idx - move < length str then
+         putChar (str !! (gen + idx - move)) >> putCenterMoveStr str gen (idx + 1) move
+    else putChar ' ' >> putCenterMoveStr str gen (idx + 1) move
 
-shouldIPrint :: Int -> Int -> String -> IO ()
-shouldIPrint start generation line =
-    if start <= generation then putCenterStr line generation 0
+shouldIPrint :: Int -> Int -> String -> Int -> IO ()
+shouldIPrint start generation line move =
+    if start <= generation then putCenterMoveStr line generation 0 move
     else return ()
 
 wolframe :: Data -> IO ()
 wolframe (Data binaryRule conf line nextLine idx generation) =
     if generation == thelines conf + start conf then
         exitWith (ExitSuccess)
-    else shouldIPrint (start conf) generation line >>
+    else shouldIPrint (start conf) generation line (move conf) >>
         wolframe (Data binaryRule conf
         (createNextLine line "" 0 binaryRule) "" 0 (generation + 1))
 
