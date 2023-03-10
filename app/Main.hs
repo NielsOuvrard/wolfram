@@ -106,7 +106,7 @@ createData :: Conf -> Data
 createData conf = Data {
     binaryRule = decimalToByte (rule conf),
     conf = conf,
-    line = stringTostringPlus2 (createStringBeginning (window conf)),
+    line = createStringBeginning (window conf),
     nextLine = replicate (window conf + 4) ' ',
     idx = 0,
     generation = 0
