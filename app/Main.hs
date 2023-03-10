@@ -170,12 +170,16 @@ putCenterStr x size y =
     if (length x) - (2 * size) == y then putChar '\n' >> return ()
     else putChar (x !! (size + y)) >> putCenterStr x size (y + 1)
 
+shouldIPrint :: Int -> Int -> String -> IO ()
+shouldIPrint start generation line =
+    if start <= generation then putCenterStr line generation 0
+    else return ()
 
 wolframe :: Data -> IO ()
 wolframe (Data binaryRule conf line nextLine idx generation) =
-    if generation == thelines conf then
+    if generation == thelines conf + start conf then
         exitWith (ExitSuccess)
-    else putCenterStr line generation 0 >>
+    else shouldIPrint (start conf) generation line >>
         wolframe (Data binaryRule conf
         (createNextLine line "" 0 binaryRule) "" 0 (generation + 1))
 
