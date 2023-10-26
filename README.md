@@ -22,10 +22,13 @@ Wolfram provides a variety arguments to customize the output. The following tabl
 - `--window` - The number of cells to display at once. Must be an integer greater than 0.
 - `--move` - The number of cells to move the window after each step. Must be an integer greater than 0.
 
+
 ## Screenshots
 
+`./wolfram --rule 102 --lines 60 --window 125 --start 0 --move 0`
 ![Screenshot 1](
 https://raw.githubusercontent.com/NielsOuvrard/wolfram/main/wolfram%20--rule%20102%20--lines%2060%20--window%20125%20--start%200%20--move%200.png)
 
+`wolfram --rule 90 --lines 60 --window 125 --start 0 --move 0`
 ![Screenshot 2](
 https://raw.githubusercontent.com/NielsOuvrard/wolfram/main/wolfram%20--rule%2090%20--lines%2060%20--window%20125%20--start%200%20--move%200.png)
