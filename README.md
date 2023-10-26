@@ -1,6 +1,4 @@
-# Project Name
-
-The project name is Wolfram.
+# Wolfram
 
 ## Description
 
