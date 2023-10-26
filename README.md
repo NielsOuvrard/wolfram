@@ -25,7 +25,7 @@ Wolfram provides a variety arguments to customize the output. The following tabl
 ## Screenshots
 
 ![Screenshot 1](
-https://raw.githubusercontent.com/robertodr/wolfram/master/screenshots/screenshot1.png)
+https://raw.githubusercontent.com/NielsOuvrard/wolfram/main/wolfram%20--rule%20102%20--lines%2060%20--window%20125%20--start%200%20--move%200.png)
 
 ![Screenshot 2](
-https://raw.githubusercontent.com/robertodr/wolfram/master/screenshots/screenshot2.png)
+https://raw.githubusercontent.com/NielsOuvrard/wolfram/main/wolfram%20--rule%2090%20--lines%2060%20--window%20125%20--start%200%20--move%200.png)
