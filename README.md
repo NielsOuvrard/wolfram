@@ -22,6 +22,8 @@ Wolfram provides a variety arguments to customize the output. The following tabl
 - `--window` - The number of cells to display at once. Must be an integer greater than 0.
 - `--move` - The number of cells to move the window after each step. Must be an integer greater than 0.
 
+To have a gui interface, you can compile with `make gui` and then execute `./wolfram-gui`.
+But be sure to have SFML installed, you can install it with `sudo apt-get install libsfml-dev`.
 
 ## Screenshots
 
